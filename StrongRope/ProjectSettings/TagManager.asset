@@ -5,6 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - Circle5kg
+  - platform
+  - mesafeSol
+  - mesafeSag
+  - kafaTokus
+  - 5kg
+  - elmas
+  - 20kg
+  - 10kg
   layers:
   - Default
   - TransparentFX
