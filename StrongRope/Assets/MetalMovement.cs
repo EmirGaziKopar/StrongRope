@@ -68,7 +68,9 @@ public class MetalMovement : MonoBehaviour
         *
         *
         */
-        if (taraf==Taraf.sol)
+
+
+        if (taraf == Taraf.sol && Vector3.Distance(GameObject.FindGameObjectWithTag("Orta").transform.position, transform.GetChild(1).position) > 0.5f && Vector3.Distance(GameObject.FindGameObjectWithTag("mesafe").transform.position, GameObject.FindGameObjectWithTag("mesafeSol").transform.position) > 0.5f)
         {
             transform.position += new Vector3(-solSpeed * Time.deltaTime, 0, 0);
 
@@ -107,14 +109,28 @@ public class MetalMovement : MonoBehaviour
                 sayac = 0;
 
             }
-
         }
+        else
+        {
+            //olurda sýnýr dýþýna çýkarsa oyun bugda kalmasýn diye kýsýtýn dýþýna itme iþlemi yapýyoruz.
+            if(taraf == Taraf.sol && Vector3.Distance(GameObject.FindGameObjectWithTag("Orta").transform.position, transform.GetChild(1).position) <= 0.5f)
+            {
+                Debug.Log("Girdikkkk");
+                transform.position -= new Vector3(1 * Time.deltaTime, 0, 0);
+            }
+            
 
-        if (taraf ==Taraf.sag)
+            if(taraf == Taraf.sol && Vector3.Distance( GameObject.FindGameObjectWithTag("mesafe").transform.position, GameObject.FindGameObjectWithTag("mesafeSol").transform.position) <= 0.5f)
+            {
+                transform.position += new Vector3(1 * Time.deltaTime, 0, 0);
+            }
+            
+        }
+        if (taraf == Taraf.sag && Vector3.Distance(GameObject.FindGameObjectWithTag("Orta").transform.position, transform.GetChild(1).position) > 0.5f && Vector3.Distance(GameObject.FindGameObjectWithTag("mesafee").transform.position, GameObject.FindGameObjectWithTag("mesafeSag").transform.position) > 0.5f)
         {
             transform.position += new Vector3(sagSpeed * Time.deltaTime, 0, 0);
 
-            if (solBasladi && speed_2>0)
+            if (solBasladi && speed_2 > 0)
             {
                 transform.position += new Vector3(-speed_2 * Time.deltaTime, 0, 0);
                 speed_2 -= 0.1f;
@@ -131,52 +147,66 @@ public class MetalMovement : MonoBehaviour
                 sayac_2 = 0;
 
             }
-
         }
 
-
-        /*transform.position += new Vector3(-solSpeed * Time.deltaTime, 0, 0);
-
-        if (sagBasladi &&  speed>0)
+        else
         {
-            transform.position += new Vector3(speed* Time.deltaTime, 0, 0);
-
-            speed -= 0.1f;
-          
-
-        }       
-        
-
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            sagBasladi = true;
-
-
-            speed = tmpSpeed;
-
-            /*if (sayac < 3)
+            if (taraf == Taraf.sag && Vector3.Distance(GameObject.FindGameObjectWithTag("Orta").transform.position, transform.GetChild(1).position) < 0.5f)
             {
-                sayac++;
-                
-
-                Vector3 a = new Vector3(0.01f, 0, 0);
-                rigidbody2D.velocity = a * speed;
-
-                
+                transform.position += new Vector3(1 * Time.deltaTime, 0, 0);
             }
-            
-            
+
+            if (taraf == Taraf.sag && Vector3.Distance(GameObject.FindGameObjectWithTag("mesafee").transform.position, GameObject.FindGameObjectWithTag("mesafeSag").transform.position) < 0.5f)
+            {
+                transform.position -= new Vector3(1 * Time.deltaTime, 0, 0);
+            }
         }
-        if (Input.GetKeyUp(KeyCode.A))
-        {
-            sayac = 0;
-
-        }*/
 
 
 
 
+            /*transform.position += new Vector3(-solSpeed * Time.deltaTime, 0, 0);
+
+            if (sagBasladi &&  speed>0)
+            {
+                transform.position += new Vector3(speed* Time.deltaTime, 0, 0);
+
+                speed -= 0.1f;
 
 
-    }
+            }       
+
+
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                sagBasladi = true;
+
+
+                speed = tmpSpeed;
+
+                /*if (sayac < 3)
+                {
+                    sayac++;
+
+
+                    Vector3 a = new Vector3(0.01f, 0, 0);
+                    rigidbody2D.velocity = a * speed;
+
+
+                }
+
+
+            }
+            if (Input.GetKeyUp(KeyCode.A))
+            {
+                sayac = 0;
+
+            }*/
+
+
+
+
+
+
+        }
 }
