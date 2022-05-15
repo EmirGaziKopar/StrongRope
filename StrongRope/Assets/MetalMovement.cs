@@ -6,6 +6,14 @@ using UnityEngine;
 public class MetalMovement : MonoBehaviour
 {
 
+    
+
+    float timeDan;
+
+    int sayacDan;
+
+    public AudioSource dan;
+
     float hizlandirTime;
 
     int hizlandirSayac;
@@ -55,9 +63,9 @@ public class MetalMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
 
-
-        if(hizlandirTime < 3)
+        if(hizlandirTime < 5)
         {
             hizlandirTime += Time.deltaTime;
         }
@@ -65,20 +73,25 @@ public class MetalMovement : MonoBehaviour
         {
             hizlandirTime = 0;
 
-            hizlandirSayac++;
+            
 
             if (hizlandirSayac < 3)
             {
-                solSpeed += 0.25f;
-                sagSpeed += 0.25f;
+                if (hizlandirSayac == 2)
+                {
+
+                    solSpeed += 0.3f;
+                    sagSpeed += 0.3f;
+                }
+                else
+                {
+                    solSpeed += 0.4f;
+                    sagSpeed += 0.4f;
+                }
+                hizlandirSayac++;
 
             }
-            if(hizlandirSayac == 2)
-            {
-                
-                solSpeed += 0.20f;   
-                sagSpeed += 0.20f;
-            }
+            
             
         }
 
@@ -107,6 +120,9 @@ public class MetalMovement : MonoBehaviour
         if (taraf == Taraf.sol && Vector3.Distance(GameObject.FindGameObjectWithTag("Orta").transform.position, transform.GetChild(1).position) > 0.5f && Vector3.Distance(GameObject.FindGameObjectWithTag("mesafe").transform.position, GameObject.FindGameObjectWithTag("mesafeSol").transform.position) > 0.5f)
         {
             transform.position += new Vector3(-solSpeed * Time.deltaTime, 0, 0);
+
+
+            
 
             if (sagBasladi && speed > 0)
             {
@@ -151,6 +167,11 @@ public class MetalMovement : MonoBehaviour
             {
                 Debug.Log("Girdikkkk");
                 transform.position -= new Vector3(1 * Time.deltaTime, 0, 0);
+                //Dan sesi
+                
+                
+                
+
             }
             
 
