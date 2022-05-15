@@ -69,15 +69,15 @@ public class MetalMovement : MonoBehaviour
 
             if (hizlandirSayac < 3)
             {
-                solSpeed += 0.3f;
-                sagSpeed += 0.3f;
+                solSpeed += 0.25f;
+                sagSpeed += 0.25f;
 
             }
             if(hizlandirSayac == 2)
             {
                 
-                solSpeed += 0.2f;
-                sagSpeed += 0.2f;
+                solSpeed += 0.20f;   
+                sagSpeed += 0.20f;
             }
             
         }

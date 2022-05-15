@@ -26,9 +26,13 @@ public class ScoreController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float time2 = time;
-        Mathf.Floor(time2);
-        time += Time.deltaTime*10;
-        score.text = "Score : " + System.Convert.ToInt32(time2).ToString();
+        if(KgTopla.isGameOver == false)
+        {
+            float time2 = time;
+            Mathf.Floor(time2);
+            time += Time.deltaTime * 10;
+            score.text = "Score : " + System.Convert.ToInt32(time2).ToString();
+        }
+        
     }
 }
