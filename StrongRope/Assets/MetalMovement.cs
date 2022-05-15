@@ -6,6 +6,10 @@ using UnityEngine;
 public class MetalMovement : MonoBehaviour
 {
 
+    float hizlandirTime;
+
+    int hizlandirSayac;
+
     public enum Taraf {
         sol, sag
     };
@@ -51,6 +55,33 @@ public class MetalMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
+        if(hizlandirTime < 10)
+        {
+            hizlandirTime += Time.deltaTime;
+        }
+        else
+        {
+            hizlandirTime = 0;
+
+            hizlandirSayac++;
+
+            if (hizlandirSayac < 3)
+            {
+                solSpeed += 0.25f;
+                sagSpeed += 0.25f;
+
+            }
+            if(hizlandirSayac == 2)
+            {
+                
+                solSpeed += 0.1f;
+                sagSpeed += 0.1f;
+            }
+            
+        }
+
         //transform.position += new Vector3(1*Time.deltaTime * speed, 0, 0);
 
         /*
@@ -70,6 +101,9 @@ public class MetalMovement : MonoBehaviour
         */
 
 
+
+
+
         if (taraf == Taraf.sol && Vector3.Distance(GameObject.FindGameObjectWithTag("Orta").transform.position, transform.GetChild(1).position) > 0.5f && Vector3.Distance(GameObject.FindGameObjectWithTag("mesafe").transform.position, GameObject.FindGameObjectWithTag("mesafeSol").transform.position) > 0.5f)
         {
             transform.position += new Vector3(-solSpeed * Time.deltaTime, 0, 0);
@@ -84,7 +118,7 @@ public class MetalMovement : MonoBehaviour
             }
 
 
-            if (Input.GetKeyDown(KeyCode.A))
+            if (Input.GetKeyDown(KeyCode.A) || Input.GetMouseButtonDown(0))
             {
                 sagBasladi = true;
 
@@ -104,7 +138,7 @@ public class MetalMovement : MonoBehaviour
                 */
 
             }
-            if (Input.GetKeyUp(KeyCode.A))
+            if (Input.GetKeyUp(KeyCode.A) || Input.GetMouseButtonUp(0))
             {
                 sayac = 0;
 
@@ -136,13 +170,13 @@ public class MetalMovement : MonoBehaviour
                 speed_2 -= 0.1f;
             }
 
-            if (Input.GetKeyDown(KeyCode.D))
+            if (Input.GetKeyDown(KeyCode.D) || Input.GetMouseButtonDown(1))
             {
                 solBasladi = true;
                 speed_2 = tmpSpeed2;
             }
 
-            if (Input.GetKeyUp(KeyCode.D))
+            if (Input.GetKeyUp(KeyCode.D)  || Input.GetMouseButtonUp(1))
             {
                 sayac_2 = 0;
 
