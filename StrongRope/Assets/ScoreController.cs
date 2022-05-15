@@ -5,12 +5,16 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
+
+
 public class ScoreController : MonoBehaviour
 {
     
     TextMeshProUGUI score;
 
     float time;
+
+    
 
 
     // Start is called before the first frame update
@@ -22,7 +26,9 @@ public class ScoreController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
-        score.text = time.ToString();
+        float time2 = time;
+        Mathf.Floor(time2);
+        time += Time.deltaTime*10;
+        score.text = "Score : " + System.Convert.ToInt32(time2).ToString();
     }
 }

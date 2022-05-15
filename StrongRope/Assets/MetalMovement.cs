@@ -57,7 +57,7 @@ public class MetalMovement : MonoBehaviour
     {
 
 
-        if(hizlandirTime < 10)
+        if(hizlandirTime < 3)
         {
             hizlandirTime += Time.deltaTime;
         }
@@ -69,15 +69,15 @@ public class MetalMovement : MonoBehaviour
 
             if (hizlandirSayac < 3)
             {
-                solSpeed += 0.25f;
-                sagSpeed += 0.25f;
+                solSpeed += 0.3f;
+                sagSpeed += 0.3f;
 
             }
             if(hizlandirSayac == 2)
             {
                 
-                solSpeed += 0.1f;
-                sagSpeed += 0.1f;
+                solSpeed += 0.2f;
+                sagSpeed += 0.2f;
             }
             
         }
