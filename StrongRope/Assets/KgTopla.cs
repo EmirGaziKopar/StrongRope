@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class KgTopla : MonoBehaviour
 {
+    public TextMeshProUGUI textKg;
+
     public GameObject panel;
 
     public static bool isGameOver;
@@ -31,12 +34,17 @@ public class KgTopla : MonoBehaviour
 
         Debug.Log("Toplam : "+toplamKg);
 
+        textKg.text = (201-toplamKg) + " KG";
+
         if(1 - (toplamKg / 200) <= 0.01)
         {
             isGameOver = true;
             Time.timeScale = 0.7f;
             panel.SetActive(true);
+            textKg.text = 0 + " kg";
         }
+
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

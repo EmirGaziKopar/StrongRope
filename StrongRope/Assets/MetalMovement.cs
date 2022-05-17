@@ -75,18 +75,18 @@ public class MetalMovement : MonoBehaviour
 
             
 
-            if (hizlandirSayac < 3)
+            if (hizlandirSayac < 4)
             {
-                if (hizlandirSayac == 2)
+                if (hizlandirSayac == 3)
                 {
 
-                    solSpeed += 0.3f;
-                    sagSpeed += 0.3f;
+                    solSpeed += 0.5f;
+                    sagSpeed += 0.5f;
                 }
                 else
                 {
-                    solSpeed += 0.4f;
-                    sagSpeed += 0.4f;
+                    solSpeed += 0.5f;
+                    sagSpeed += 0.5f;
                 }
                 hizlandirSayac++;
 
@@ -134,7 +134,7 @@ public class MetalMovement : MonoBehaviour
             }
 
 
-            if (Input.GetKeyDown(KeyCode.A) || Input.GetMouseButtonDown(0))
+            if (Input.GetKeyDown(KeyCode.A) || Input.GetMouseButtonDown(0) || MobileButtonController.leftClick)
             {
                 sagBasladi = true;
 
@@ -154,7 +154,7 @@ public class MetalMovement : MonoBehaviour
                 */
 
             }
-            if (Input.GetKeyUp(KeyCode.A) || Input.GetMouseButtonUp(0))
+            if (Input.GetKeyUp(KeyCode.A) || Input.GetMouseButtonUp(0) || MobileButtonController.leftClick)
             {
                 sayac = 0;
 
@@ -191,13 +191,13 @@ public class MetalMovement : MonoBehaviour
                 speed_2 -= 0.1f;
             }
 
-            if (Input.GetKeyDown(KeyCode.D) || Input.GetMouseButtonDown(1))
+            if (Input.GetKeyDown(KeyCode.D) || Input.GetMouseButtonDown(1) || MobileButtonController.rightClick)
             {
                 solBasladi = true;
                 speed_2 = tmpSpeed2;
             }
 
-            if (Input.GetKeyUp(KeyCode.D)  || Input.GetMouseButtonUp(1))
+            if (Input.GetKeyUp(KeyCode.D)  || Input.GetMouseButtonUp(1) || MobileButtonController.rightClick)
             {
                 sayac_2 = 0;
 
